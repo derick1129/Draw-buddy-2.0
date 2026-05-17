@@ -1,8 +1,11 @@
 {
-  "name": "db",
+  "name": "@repo/db",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "exports": {
+    "./client": "./src/client.ts"
+  },
   "devDependencies": {
     "@repo/typescript-config": "*"
   },
