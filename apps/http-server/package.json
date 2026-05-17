@@ -10,7 +10,9 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
-    "@repo/db": "*" 
+    "@repo/db": "*",
+    "@repo/backend-common": "*",
+    "@repo/common": "*"
   },
   "keywords": [],
   "author": "",

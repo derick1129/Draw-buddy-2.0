@@ -9,7 +9,8 @@
     "build": "tsc -b"
   },
   "devDependencies": {
-    "@repo/typescript-config": "*"
+    "@repo/typescript-config": "*",
+    "@repo/backend-common": "*"
   },
   "keywords": [],
   "author": "",
