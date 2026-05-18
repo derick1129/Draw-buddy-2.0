@@ -1,7 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { CreateUserSchema, SigninSchema } from "@repo/common/types";
+import { CreateRoomSchema, CreateUserSchema, SigninSchema } from "@repo/common/types";
 import { prismaClient } from "@repo/db/client";
 import { JWT_SECRET } from "@repo/backend-common/config"
 
@@ -80,6 +80,32 @@ app.post("/signin", async (req, res) => {
             messsage: "something went wrong"
         })
     }
-})
+});
+
+app.post("/room", async (req, res) => {
+    const parsedData = CreateRoomSchema.safeParse(req.body);
+    if (!parsedData.success) {
+        return res.status(403).json({
+            message: "Invalid inputs"
+        });
+    }
+
+    try {
+        const room = await prismaClient.room.create({
+            data: {
+                slug: parsedData.data.name,
+                //@ts-ignore
+                adminId: req.userId
+            }
+        })
+        return res.json({
+            roomId: room.id
+        })
+    } catch (e) {
+        return res.status(411).json({
+            message: "Room already exists"
+        })
+    }
+});
 
 app.listen(3001);
