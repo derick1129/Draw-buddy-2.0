@@ -10,15 +10,19 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
-    "@repo/db": "*",
     "@repo/backend-common": "*",
-    "@repo/common": "*"
+    "@repo/common": "*",
+    "@repo/db": "*"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.6",
-    "express": "^5.2.1"
+    "@types/jsonwebtoken": "^9.0.10",
+    "bcrypt": "^6.0.0",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
   }
 }
