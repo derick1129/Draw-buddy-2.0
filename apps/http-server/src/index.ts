@@ -1,12 +1,14 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import cors from "cors";
 import { CreateRoomSchema, CreateUserSchema, SigninSchema } from "@repo/common/types";
 import { prismaClient } from "@repo/db/client";
 import { JWT_SECRET } from "@repo/backend-common/config"
 
 const app = express();
 app.use(express.json());
+app.use(cors())
  
 
 app.post("/signup", async (req, res) => {
@@ -18,7 +20,7 @@ app.post("/signup", async (req, res) => {
         return;
     }
     try {
-        const hashedPassword = await bcrypt.hash(parsedData.data.password, 5);
+        const hashedPassword = await bcrypt.hash(parsedData.data.password, 10);
         const user = await prismaClient.user.create({
             data: {
                 email: parsedData.data.email,
